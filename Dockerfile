@@ -37,6 +37,10 @@ RUN \
   apt-get update && \
   apt-get install -y docker-ce-cli && \
   \
+  echo "**** passwordless sudo for abc ****" && \
+  echo "abc ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/99-passwordless-sudo && \
+  chmod 0440 /etc/sudoers.d/99-passwordless-sudo && \
+  \
   echo "**** install Node.js LTS + npm ****" && \
   curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
   apt-get install -y nodejs && \
